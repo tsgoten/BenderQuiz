@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class IntroductionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +16,8 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func beginQuestions(_ sender: UIButton) {
+        performSegue(withIdentifier: "QuestionSegue", sender: nil)
+    }
 }
 
