@@ -59,9 +59,9 @@ class QuestionViewController: UIViewController {
         case .single:
             updateSingleUI(question: currentQuestion)
         case .multiple:
-            multipleAnswerStackView.isHidden = false
+            updateMultipleUI(question: currentQuestion)
         case .ranged:
-            rangeAnswerStackView.isHidden = false
+            updateRangeUI(question: currentQuestion)
         }
     }
     func updateSingleUI(question: Question) {
@@ -70,6 +70,18 @@ class QuestionViewController: UIViewController {
         singleAnswer2Button.setTitle(question.answers[1].text, for: UIButton.State.normal)
         singleAnswer3Button.setTitle(question.answers[2].text, for: UIButton.State.normal)
         singleAnswer4Button.setTitle(question.answers[3].text, for: UIButton.State.normal)
+    }
+    func updateMultipleUI(question: Question) {
+        multipleAnswerStackView.isHidden = false
+        multipleAnswer1Label.text = question.answers[0].text
+        multipleAnswer2Label.text = question.answers[1].text
+        multipleAnswer3Label.text = question.answers[2].text
+        multipleAnswer4Label.text = question.answers[3].text
+    }
+    func updateRangeUI(question: Question){
+        rangeAnswerStackView.isHidden = false
+        rangeAnswer1Label.text = question.answers[0].text
+        rangeAnswer2Label.text = question.answers[1].text
     }
     
     var questions: [Question] = [
@@ -86,7 +98,7 @@ class QuestionViewController: UIViewController {
             Answer(text: "Peaceful", type: .air)
             ]),
         Question(text: "How much do you support Zutara?", type: .ranged, answers: [
-            Answer(text: "Meant to be!", type: .water ),
+            Answer(text: "Meant to be!", type: .fire ),
             Answer(text: "Never!", type: .air)
             ])
         
@@ -103,11 +115,22 @@ class QuestionViewController: UIViewController {
     }
     @IBAction func multipleAnswerSubmitAnswerButtonPressed(_ sender: UIButton) {
         questionIndex+=1
-        updateUI()
+        if(questionIndex<questions.count) {
+            updateUI()
+        }
+        else {
+            
+        }
+        
     }
     @IBAction func rangeAnswerSubmitButtonPressed(_ sender: UIButton) {
         questionIndex+=1
-        updateUI()
+        if(questionIndex<questions.count) {
+            updateUI()
+        }
+        else {
+            
+        }
     }
     
     /*

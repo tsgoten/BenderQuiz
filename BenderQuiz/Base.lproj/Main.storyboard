@@ -198,22 +198,20 @@
                                         <rect key="frame" x="0.0" y="39" width="345" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU4-SQ-Z73">
-                                                <rect key="frame" x="0.0" y="0.0" width="247" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="247" id="mBz-Ko-Zko"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="144.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdU-it-EdC">
-                                                <rect key="frame" x="303" y="0.0" width="42" height="20.5"/>
+                                                <rect key="frame" x="200.5" y="0.0" width="144.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="EU4-SQ-Z73" firstAttribute="width" secondItem="MdU-it-EdC" secondAttribute="width" id="TLK-JM-afk"/>
                                             <constraint firstAttribute="trailing" secondItem="MdU-it-EdC" secondAttribute="trailing" id="Y2Z-ma-Qqw"/>
                                             <constraint firstItem="EU4-SQ-Z73" firstAttribute="leading" secondItem="aFj-2P-0kw" secondAttribute="leading" id="f73-pt-4dE"/>
                                             <constraint firstAttribute="trailing" secondItem="MdU-it-EdC" secondAttribute="trailing" id="y2T-Xs-Mqh"/>
