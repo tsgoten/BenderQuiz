@@ -14,7 +14,6 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
         questionLabel.numberOfLines = 2
-        // Do any additional setup after loading the view.
     }
     
     var questionIndex = 0
@@ -44,6 +43,13 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var rangeAnswerSlider: UISlider!
     
     @IBOutlet var progressView: UIView!
+    
+    var elementScore: [BenderType : Int] = [
+        .fire : 0,
+        .water : 0,
+        .earth : 0,
+        .air : 0
+    ]
     
     func updateUI() {
         singleAnswerStackView.isHidden = true
@@ -85,6 +91,10 @@ class QuestionViewController: UIViewController {
     }
     
     var questions: [Question] = [
+        Question(text: "How much do you support Zutara?", type: .ranged, answers: [
+            Answer(text: "Meant to be!", type: .fire ),
+            Answer(text: "Never!", type: .air)
+            ]),
         Question(text: "Where would you like to go on vacation?", type: .single, answers: [
             Answer(text: "Niagara Falls", type: .water),
             Answer(text: "None, just meditate at home", type: .air),
@@ -96,15 +106,31 @@ class QuestionViewController: UIViewController {
             Answer(text: "Sad", type: .water),
             Answer(text: "Confident", type: .earth),
             Answer(text: "Peaceful", type: .air)
-            ]),
-        Question(text: "How much do you support Zutara?", type: .ranged, answers: [
-            Answer(text: "Meant to be!", type: .fire ),
-            Answer(text: "Never!", type: .air)
             ])
-        
     ]
+    func updateScoreSheet(answers: [Answer]){
+        for answer in answers {
+            elementScore.updateValue(elementScore[answer.type]! + 1, forKey: answer.type)
+        }
+        print("fire \(elementScore[.fire]!)")
+        print("water \(elementScore[.water]!)")
+        print("earth \(elementScore[.earth]!)")
+        print("air \(elementScore[.air]!)")
+    }
     
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
+        switch sender {
+            case singleAnswer1Button:
+                updateScoreSheet(answers: [questions[questionIndex].answers[0]])
+            case singleAnswer2Button:
+                updateScoreSheet(answers: [questions[questionIndex].answers[1]])
+            case singleAnswer3Button:
+                updateScoreSheet(answers: [questions[questionIndex].answers[2]])
+            case singleAnswer4Button:
+                updateScoreSheet(answers: [questions[questionIndex].answers[3]])
+            default:
+                updateScoreSheet(answers: [])
+        }
         questionIndex+=1
         if(questionIndex<questions.count) {
             updateUI()
@@ -114,6 +140,20 @@ class QuestionViewController: UIViewController {
         }
     }
     @IBAction func multipleAnswerSubmitAnswerButtonPressed(_ sender: UIButton) {
+        var answersSelected: [Answer] = []
+        if multipleAnswer1Switch.isOn {
+            answersSelected.append(questions[questionIndex].answers[0])
+        }
+        if multipleAnswer2Switch.isOn {
+            answersSelected.append(questions[questionIndex].answers[1])
+        }
+        if multipleAnswer3Switch.isOn {
+            answersSelected.append(questions[questionIndex].answers[2])
+        }
+        if multipleAnswer4Switch.isOn {
+            answersSelected.append(questions[questionIndex].answers[3])
+        }
+        updateScoreSheet(answers: answersSelected)
         questionIndex+=1
         if(questionIndex<questions.count) {
             updateUI()
@@ -124,6 +164,15 @@ class QuestionViewController: UIViewController {
         
     }
     @IBAction func rangeAnswerSubmitButtonPressed(_ sender: UIButton) {
+        if(rangeAnswerSlider.value == 0.5){
+            updateScoreSheet(answers: [])
+        }
+        else if (rangeAnswerSlider.value > 0.5){
+            updateScoreSheet(answers: [questions[questionIndex].answers[1]])
+        }
+        else if (rangeAnswerSlider.value < 0.5){
+            updateScoreSheet(answers: [questions[questionIndex].answers[0]])
+        }
         questionIndex+=1
         if(questionIndex<questions.count) {
             updateUI()
