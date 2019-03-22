@@ -112,6 +112,7 @@ class QuestionViewController: UIViewController {
         for answer in answers {
             elementScore.updateValue(elementScore[answer.type]! + 1, forKey: answer.type)
         }
+        print("Question: \(questionIndex)")
         print("fire \(elementScore[.fire]!)")
         print("water \(elementScore[.water]!)")
         print("earth \(elementScore[.earth]!)")
@@ -119,7 +120,8 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
-        switch sender {
+        if(questionIndex<questions.count) {
+            switch sender {
             case singleAnswer1Button:
                 updateScoreSheet(answers: [questions[questionIndex].answers[0]])
             case singleAnswer2Button:
@@ -130,55 +132,65 @@ class QuestionViewController: UIViewController {
                 updateScoreSheet(answers: [questions[questionIndex].answers[3]])
             default:
                 updateScoreSheet(answers: [])
-        }
-        questionIndex+=1
-        if(questionIndex<questions.count) {
-            updateUI()
-        }
-        else {
-            
+            }
+            questionIndex+=1
+            if(questionIndex<questions.count) {
+                updateUI()
+            }
+            else {
+                performSegue(withIdentifier: "ResultScreenSegue", sender: elementScore)
+            }
         }
     }
     @IBAction func multipleAnswerSubmitAnswerButtonPressed(_ sender: UIButton) {
-        var answersSelected: [Answer] = []
-        if multipleAnswer1Switch.isOn {
-            answersSelected.append(questions[questionIndex].answers[0])
-        }
-        if multipleAnswer2Switch.isOn {
-            answersSelected.append(questions[questionIndex].answers[1])
-        }
-        if multipleAnswer3Switch.isOn {
-            answersSelected.append(questions[questionIndex].answers[2])
-        }
-        if multipleAnswer4Switch.isOn {
-            answersSelected.append(questions[questionIndex].answers[3])
-        }
-        updateScoreSheet(answers: answersSelected)
-        questionIndex+=1
         if(questionIndex<questions.count) {
-            updateUI()
+            var answersSelected: [Answer] = []
+            if multipleAnswer1Switch.isOn {
+                answersSelected.append(questions[questionIndex].answers[0])
+            }
+            if multipleAnswer2Switch.isOn {
+                answersSelected.append(questions[questionIndex].answers[1])
+            }
+            if multipleAnswer3Switch.isOn {
+                answersSelected.append(questions[questionIndex].answers[2])
+            }
+            if multipleAnswer4Switch.isOn {
+                answersSelected.append(questions[questionIndex].answers[3])
+            }
+            updateScoreSheet(answers: answersSelected)
+            questionIndex+=1
+            if(questionIndex<questions.count) {
+                updateUI()
+            }
+            else {
+                performSegue(withIdentifier: "ResultScreenSegue", sender: elementScore)
+            }
         }
-        else {
-            
-        }
-        
     }
     @IBAction func rangeAnswerSubmitButtonPressed(_ sender: UIButton) {
-        if(rangeAnswerSlider.value == 0.5){
-            updateScoreSheet(answers: [])
-        }
-        else if (rangeAnswerSlider.value > 0.5){
-            updateScoreSheet(answers: [questions[questionIndex].answers[1]])
-        }
-        else if (rangeAnswerSlider.value < 0.5){
-            updateScoreSheet(answers: [questions[questionIndex].answers[0]])
-        }
-        questionIndex+=1
         if(questionIndex<questions.count) {
-            updateUI()
+            if(rangeAnswerSlider.value == 0.5){
+                updateScoreSheet(answers: [])
+            }
+            else if (rangeAnswerSlider.value > 0.5){
+                updateScoreSheet(answers: [questions[questionIndex].answers[1]])
+            }
+            else if (rangeAnswerSlider.value < 0.5){
+                updateScoreSheet(answers: [questions[questionIndex].answers[0]])
+            }
+            questionIndex+=1
+            if(questionIndex<questions.count) {
+                updateUI()
+            }
+            else {
+                performSegue(withIdentifier: "ResultScreenSegue", sender: elementScore)
+            }
         }
-        else {
-            
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ResultsScreenSegue") {
+            let resultScreenViewController = segue.destination as! ResultScreenViewController
+            resultScreenViewController.responses = elementScore
         }
     }
     
