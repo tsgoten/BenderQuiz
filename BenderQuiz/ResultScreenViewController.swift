@@ -9,22 +9,27 @@
 import UIKit
 
 class ResultScreenViewController: UIViewController {
-    var responses: [BenderType:Int]!
+    lazy var responses: [BenderType:Int]! = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         calculateDecision()
     }
-    private func calculateDecision(){
-        var maxVal = 0
-        var maxBenderType: BenderType = .fire
-        for (bender, value) in responses {
-            if(value >= maxVal){
-                maxVal = value
-                maxBenderType = bender
+    @IBOutlet weak var decisionLabel: UILabel!
+    var decision: BenderType {
+        get {
+            var maxVal = 0
+            var maxBenderType: BenderType? = nil
+            for (bender, value) in responses {
+                print("\(bender) value is \(value)")
+                if(value >= maxVal){
+                    maxVal = value
+                    maxBenderType = bender
+                }
             }
+            return maxBenderType!
         }
-        var decision: BenderType
-        decision = maxBenderType
+    }
+    private func calculateDecision(){
         switch decision {
         case .fire:
             decisionLabel.text = "You are a Firebender"
@@ -35,10 +40,7 @@ class ResultScreenViewController: UIViewController {
         case .air:
             decisionLabel.text = "You are a Airbender"
         }
-    }
-
-    @IBOutlet weak var decisionLabel: UILabel!
-    /*
+    }    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -263,7 +263,7 @@
                         <outlet property="multipleAnswer4Switch" destination="Feh-Hh-eZf" id="JsG-55-7Re"/>
                         <outlet property="multipleAnswerStackView" destination="ESF-av-tpz" id="oT8-fR-GAB"/>
                         <outlet property="navigationItem" destination="f6V-on-01B" id="Ifq-jr-q1t"/>
-                        <outlet property="progressView" destination="B3M-wE-987" id="bXl-JO-OYV"/>
+                        <outlet property="progressView" destination="WTm-xq-ced" id="Rrj-tN-d8t"/>
                         <outlet property="questionLabel" destination="0iw-Ls-vIM" id="FUf-Sz-OGy"/>
                         <outlet property="rangeAnswer1Label" destination="EU4-SQ-Z73" id="g0F-Np-6RT"/>
                         <outlet property="rangeAnswer2Label" destination="MdU-it-EdC" id="piz-u9-vJc"/>
@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="1736.8" y="133.5832083958021"/>
         </scene>
-        <!--Result Screen View Controller-->
+        <!--Results-->
         <scene sceneID="taW-v8-XyH">
             <objects>
                 <viewController id="I3u-dM-zaf" customClass="ResultScreenViewController" customModule="BenderQuiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -290,19 +290,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-MC-5co">
-                                <rect key="frame" x="36.5" y="183.5" width="302.5" height="300"/>
+                                <rect key="frame" x="67.5" y="183.5" width="240" height="300"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-q4-pPV">
-                                        <rect key="frame" x="31" y="0.0" width="240" height="212.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="212"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are a Firebender!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjx-7R-WuA">
-                                        <rect key="frame" x="0.0" y="220.5" width="302.5" height="49.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjx-7R-WuA">
+                                        <rect key="frame" x="95" y="220" width="50" height="50"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS9-iW-s2X">
-                                        <rect key="frame" x="116" y="278" width="70.5" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS9-iW-s2X">
+                                        <rect key="frame" x="95" y="278" width="50" height="22"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -321,6 +321,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="thU-3T-qtu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Results" largeTitleDisplayMode="never" id="FkH-iM-4Jd"/>
                     <connections>
                         <outlet property="decisionLabel" destination="Tjx-7R-WuA" id="wbP-5Z-Llg"/>
                     </connections>

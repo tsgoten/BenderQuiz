@@ -42,7 +42,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var rangeAnswer2Label: UILabel!
     @IBOutlet weak var rangeAnswerSlider: UISlider!
     
-    @IBOutlet var progressView: UIView!
+    @IBOutlet weak var progressView: UIProgressView!
+    
     
     var elementScore: [BenderType : Int] = [
         .fire : 0,
@@ -52,12 +53,25 @@ class QuestionViewController: UIViewController {
     ]
     
     func updateUI() {
+        singleAnswer1Button.setTitle("", for: UIButton.State.normal)
+        singleAnswer2Button.setTitle("", for: UIButton.State.normal)
+        singleAnswer3Button.setTitle("", for: UIButton.State.normal)
+        singleAnswer4Button.setTitle("", for: UIButton.State.normal)
+        multipleAnswer1Label.text = ""
+        multipleAnswer2Label.text = ""
+        multipleAnswer3Label.text = ""
+        multipleAnswer4Label.text = ""
+        rangeAnswer1Label.text = ""
+        rangeAnswer2Label.text = ""
         singleAnswerStackView.isHidden = true
         multipleAnswerStackView.isHidden = true
         rangeAnswerStackView.isHidden = true
-        
+        rangeAnswerSlider.setValue(0.5, animated: false)
         let currentQuestion = questions[questionIndex]
         navigationItem.title = "Question #\(questionIndex+1)"
+        
+        let totalProgress = Float((questionIndex+1))/Float(questions.count)
+        progressView.setProgress(totalProgress, animated: true)
         
         questionLabel.text = currentQuestion.text
         
@@ -91,9 +105,25 @@ class QuestionViewController: UIViewController {
     }
     
     var questions: [Question] = [
+        Question(text: "Who is your favorite character?", type: .single, answers: [
+            Answer(text: "Aang", type: .air),
+            Answer(text: "Katara", type: .water),
+            Answer(text: "Zuko", type: .fire),
+            Answer(text: "Toph", type: .earth),
+            ]),
         Question(text: "How much do you support Zutara?", type: .ranged, answers: [
             Answer(text: "Meant to be!", type: .fire ),
             Answer(text: "Never!", type: .air)
+            ]),
+        Question(text: "Who is your least favorite character?", type: .single, answers: [
+            Answer(text: "Aang", type: .air),
+            Answer(text: "Katara", type: .water),
+            Answer(text: "Zuko", type: .fire),
+            Answer(text: "Toph", type: .earth),
+            ]),
+        Question(text: "Do you like spicy food?", type: .ranged, answers: [
+            Answer(text: "Yes", type: .fire ),
+            Answer(text: "No", type: .water)
             ]),
         Question(text: "Where would you like to go on vacation?", type: .single, answers: [
             Answer(text: "Niagara Falls", type: .water),
@@ -188,7 +218,7 @@ class QuestionViewController: UIViewController {
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ResultsScreenSegue") {
+        if (segue.identifier == "ResultScreenSegue") {
             let resultScreenViewController = segue.destination as! ResultScreenViewController
             resultScreenViewController.responses = elementScore
         }
