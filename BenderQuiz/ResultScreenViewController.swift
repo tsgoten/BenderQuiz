@@ -12,6 +12,7 @@ class ResultScreenViewController: UIViewController {
     lazy var responses: [BenderType:Int]! = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         calculateDecision()
     }
     @IBOutlet weak var decisionLabel: UILabel!

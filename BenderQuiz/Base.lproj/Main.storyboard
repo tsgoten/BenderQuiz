@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
-        <!--Question View Controller-->
+        <!--Title-->
         <scene sceneID="5Os-qQ-mTN">
             <objects>
                 <viewController id="KW6-xH-60r" customClass="QuestionViewController" customModule="BenderQuiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -251,7 +251,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wzv-ZA-Oyh"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f6V-on-01B"/>
+                    <navigationItem key="navigationItem" title="Title" id="4gJ-7u-Yfz">
+                        <barButtonItem key="backBarButtonItem" title="previous" id="1bd-Es-gqd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="multipleAnswer1Label" destination="AOh-zs-ysa" id="nY5-Ux-7cQ"/>
                         <outlet property="multipleAnswer1Switch" destination="5oS-Sl-kfk" id="Jmh-oe-hRQ"/>
@@ -262,7 +264,7 @@
                         <outlet property="multipleAnswer4Label" destination="pzC-Wg-m1s" id="8Tu-6R-vcm"/>
                         <outlet property="multipleAnswer4Switch" destination="Feh-Hh-eZf" id="JsG-55-7Re"/>
                         <outlet property="multipleAnswerStackView" destination="ESF-av-tpz" id="oT8-fR-GAB"/>
-                        <outlet property="navigationItem" destination="f6V-on-01B" id="Ifq-jr-q1t"/>
+                        <outlet property="navigationItem" destination="4gJ-7u-Yfz" id="asa-OJ-rl4"/>
                         <outlet property="progressView" destination="WTm-xq-ced" id="Rrj-tN-d8t"/>
                         <outlet property="questionLabel" destination="0iw-Ls-vIM" id="FUf-Sz-OGy"/>
                         <outlet property="rangeAnswer1Label" destination="EU4-SQ-Z73" id="g0F-Np-6RT"/>
@@ -290,19 +292,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-MC-5co">
-                                <rect key="frame" x="67.5" y="183.5" width="240" height="300"/>
+                                <rect key="frame" x="-292.5" y="183.5" width="960" height="300"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-q4-pPV">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="212"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="atla" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-q4-pPV">
+                                        <rect key="frame" x="0.0" y="0.0" width="960" height="284"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjx-7R-WuA">
-                                        <rect key="frame" x="95" y="220" width="50" height="50"/>
+                                        <rect key="frame" x="455" y="292" width="50" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS9-iW-s2X">
-                                        <rect key="frame" x="95" y="278" width="50" height="22"/>
+                                        <rect key="frame" x="455" y="300" width="50" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -310,6 +312,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="Lfo-zf-WHy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="wLa-us-3PM"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -349,4 +352,7 @@
             <point key="canvasLocation" x="797.60000000000002" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="atla" width="960" height="640"/>
+    </resources>
 </document>

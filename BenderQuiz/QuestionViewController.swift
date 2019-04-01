@@ -20,7 +20,7 @@ class QuestionViewController: UIViewController {
     
 
     @IBOutlet weak var questionLabel: UILabel!
-    
+   
     @IBOutlet weak var singleAnswerStackView: UIStackView!
     @IBOutlet weak var singleAnswer1Button: UIButton!
     @IBOutlet weak var singleAnswer2Button: UIButton!
